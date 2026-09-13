@@ -14,3 +14,12 @@ for idea in payload['ideas']:
 serialized = json.dumps(payload, ensure_ascii=False, separators=(',', ':'))
 (ROOT / 'site' / 'content.js').write_text('window.RESEARCH = ' + serialized + ';\n', encoding='utf-8')
 print(f"Built {len(payload['ideas'])} ideas, {len(payload['datasets'])} datasets, {len(payload['profile']['people'])} profiles")
+
+# Keep the dedicated model-design section reproducible.
+import re
+page = ROOT / "index.html"
+section = (ROOT / "site" / "climate-section.html").read_text(encoding="utf-8")
+html = page.read_text(encoding="utf-8")
+html, n = re.subn(r"  <!-- climate-start -->.*?  <!-- climate-end -->", lambda _: "  <!-- climate-start -->\n" + section + "  <!-- climate-end -->", html, flags=re.S)
+assert n == 1, "Missing or duplicate climate section markers"
+page.write_text(html, encoding="utf-8")

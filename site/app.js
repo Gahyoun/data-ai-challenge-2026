@@ -8,11 +8,11 @@ const external = (url, title) => `<a href="${safeURL(url)}" target="_blank" rel=
 const ideas = window.RESEARCH.ideas;
 const datasets = window.RESEARCH.datasets;
 const people = window.RESEARCH.profile.people;
-const routes = {ideas:'아이디어 탐색',profile:'연구자와 관심사',evidence:'현안과 근거',data:'공공데이터 후보',reuse:'치안 프로젝트 확장',plan:'공모 요건과 실행계획'};
+const routes = {ideas:'아이디어 탐색',climate:'기후쉼터 모델 설계',profile:'연구자와 관심사',evidence:'현안과 근거',data:'공공데이터 후보',reuse:'치안 프로젝트 확장',plan:'공모 요건과 실행계획'};
 const categories = ['전체','교육','환경','교통','모빌리티','치안'];
 const tags = {
   'slope-patrol':['다층 네트워크','에너지 제약','공정 배치'],
-  'heat-access':['시간 의존 접근성','다목적 경로','운영시간'],
+  'heat-access':['이질적 에이전트','시설 배치 스케일링','정원·운영시간'],
   'flood-resilience':['퍼콜레이션','도로 회복력','공간 널모형'],
   'school-access':['이분 네트워크','공급 용량','접근성 형평성'],
   'drt-access':['시간표 네트워크','환승·대기','DRT 시나리오'],
@@ -20,7 +20,7 @@ const tags = {
 };
 const bundle = {
   'slope-patrol':['D01','D02','D03','D04','D05','D11','D16'],
-  'heat-access':['D01','D02','D13','D15','D16'],
+  'heat-access':['D01','D02','D13','D15','D16','D17','D18'],
   'flood-resilience':['D01','D03','D06','D14','D15','D16'],
   'school-access':['D01','D06','D07','D08','D09','D16'],
   'drt-access':['D01','D08','D09','D10','D16'],
@@ -52,14 +52,15 @@ function renderIdeas(){
   const rank=ideas.map((i,index)=>({...i,index,score:i.fitScore*w[0]+i.feasibilityScore*w[1]+i.noveltyScore*w[2]})).filter(i=>category==='전체'||i.domain.includes(category)).sort((a,b)=>b.score-a.score||a.index-b.index);
   $('#idea-count').textContent = rank.length;
   $('#nav-count').textContent = ideas.length;
-  $('#idea-list').innerHTML=rank.map(i=>`<button class="idea-card" data-idea="${e(i.id)}" aria-haspopup="dialog" aria-label="${e(i.title)} 상세 보기"><div><div class="card-kicker"><span>${String(i.index+1).padStart(2,'0')} / ${e(i.domain)}</span>${gate[i.id]?`<span class="badge warning">${e(gate[i.id])}</span>`:''}</div><h3>${e(i.title)}</h3><p>${e(i.summary)}</p><div class="card-method">${tags[i.id].map(t=>`<span>${e(t)}</span>`).join('')}</div></div><div class="card-score"><b>${i.score.toFixed(1)}</b><small>/ 5.0</small><span class="arrow" aria-hidden="true">↗</span></div></button>`).join('');
+  $('#idea-list').innerHTML=rank.map(i=>`<button class="idea-card${i.id==='heat-access'?' featured':''}" data-idea="${e(i.id)}" aria-haspopup="dialog" aria-label="${e(i.title)} 상세 보기"><div><div class="card-kicker"><span>${String(i.index+1).padStart(2,'0')} / ${e(i.domain)}</span>${i.id==='heat-access'?'<span class="badge success">주력 검토</span>':''}${gate[i.id]?`<span class="badge warning">${e(gate[i.id])}</span>`:''}</div><h3>${e(i.title)}</h3><p>${e(i.summary)}</p><div class="card-method">${tags[i.id].map(t=>`<span>${e(t)}</span>`).join('')}</div></div><div class="card-score"><b>${i.score.toFixed(1)}</b><small>/ 5.0</small><span class="arrow" aria-hidden="true">↗</span></div></button>`).join('');
   $$('[data-idea]').forEach(b=>b.addEventListener('click',()=>showIdea(b.dataset.idea,b)));
 }
 function showIdea(id,button){
   const i=ideas.find(x=>x.id===id); if(!i) return;
   activeCard=button;
   const fields=[['문제와 필요',i.need],['방법론',i.method],['무엇을 측정하나',i.observable],['비교 기준 · 널모형',i.nullModel],['검증 방법',i.validation],['작게 시작하는 MVP',i.mvp],['제약과 위험',i.risk],['점수의 근거',i.scoreRationale||'공개 연구 적합성·데이터 확보 조건·질문 차별성을 기준으로 한 정성 판단입니다.']];
-  $('#idea-detail').innerHTML=`<span class="badge info">${e(i.domain)}</span> ${gate[id]?`<span class="badge warning">${e(gate[id])}</span>`:''}<h2 id="dialog-title">${e(i.title)}</h2><p>${e(i.summary)}</p><div class="detail-grid">${fields.map(([label,value])=>`<section class="detail-item"><h3>${e(label)}</h3><p>${e(value)}</p></section>`).join('')}<section class="detail-item"><h3>연결할 데이터 후보</h3><ul class="source-links">${bundle[id].map(d=>datasets.find(x=>x.id===d)).filter(Boolean).map(d=>`<li>${external(d.url,d.name)} <span class="meta">${e(d.id)}</span></li>`).join('')}</ul><p class="meta" style="margin-top:12px">지역별 보행망·운영시간·통학구역·돌봄시설·의료/대피 시설은 선택 주제에 따라 추가 확보가 필요합니다. 목록의 모든 데이터가 확보된 것은 아닙니다.</p></section><section class="detail-item"><h3>공식 근거와 방법론 선례</h3><ul class="source-links">${i.sources.map(s=>`<li>${external(s.url,s.title)}<p class="meta">${e(s.published)} · 관측: ${e(s.referencePeriod)}</p></li>`).join('')}</ul></section></div>`;
+  $('#idea-detail').innerHTML=`<span class="badge info">${e(i.domain)}</span> ${gate[id]?`<span class="badge warning">${e(gate[id])}</span>`:''}<h2 id="dialog-title">${e(i.title)}</h2><p>${e(i.summary)}</p>${id==='heat-access'?'<p><a href="#climate" id="open-climate-design">스케일링 계산과 전체 모델 설계 보기 →</a></p>':''}<div class="detail-grid">${fields.map(([label,value])=>`<section class="detail-item"><h3>${e(label)}</h3><p>${e(value)}</p></section>`).join('')}<section class="detail-item"><h3>연결할 데이터 후보</h3><ul class="source-links">${bundle[id].map(d=>datasets.find(x=>x.id===d)).filter(Boolean).map(d=>`<li>${external(d.url,d.name)} <span class="meta">${e(d.id)}</span></li>`).join('')}</ul><p class="meta" style="margin-top:12px">지역별 보행망·운영시간·통학구역·돌봄시설·의료/대피 시설은 선택 주제에 따라 추가 확보가 필요합니다. 목록의 모든 데이터가 확보된 것은 아닙니다.</p></section><section class="detail-item"><h3>공식 근거와 방법론 선례</h3><ul class="source-links">${i.sources.map(s=>`<li>${external(s.url,s.title)}<p class="meta">${e(s.published)} · 관측: ${e(s.referencePeriod)}</p></li>`).join('')}</ul></section></div>`;
+  $('#open-climate-design')?.addEventListener('click',()=>$('#idea-dialog').close());
   $('#idea-dialog').showModal();$('#idea-dialog').scrollTop=0;$('#close-dialog').focus();
 }
 function renderProfiles(){
@@ -68,8 +69,8 @@ function renderProfiles(){
 function renderEvidence(){
   const map=new Map();
   ideas.forEach(i=>i.sources.forEach(s=>{if(!map.has(s.url))map.set(s.url,{...s,ideas:[]});map.get(s.url).ideas.push(i.title);}));
-  const sources=[...map.values()].sort((a,b)=>Number(/nature.com/.test(a.url))-Number(/nature.com/.test(b.url))||String(b.published).localeCompare(a.published));
-  $('#evidence-list').innerHTML=sources.map(s=>`<article class="evidence-card"><div class="evidence-date">${e(s.published)}<span>${/nature.com/.test(s.url)?'방법론 선례':'공식·공공기관 자료'}</span></div><div><h2>${e(s.title)}</h2><p>${e(s.claim)}</p><p class="meta">관측·기준 기간: ${e(s.referencePeriod)}</p><p class="meta">연결 질문: ${e([...new Set(s.ideas)].join(' / '))}</p>${external(s.url,'근거 원문 열기')}</div></article>`).join('');
+  const sources=[...map.values()].sort((a,b)=>Number(a.kind==='research'||/nature.com/.test(a.url))-Number(b.kind==='research'||/nature.com/.test(b.url))||String(b.published).localeCompare(a.published));
+  $('#evidence-list').innerHTML=sources.map(s=>`<article class="evidence-card"><div class="evidence-date">${e(s.published)}<span>${(s.kind==='research'||/nature.com/.test(s.url))?'방법론 선례':'공식·공공기관 자료'}</span></div><div><h2>${e(s.title)}</h2><p>${e(s.claim)}</p><p class="meta">관측·기준 기간: ${e(s.referencePeriod)}</p><p class="meta">연결 질문: ${e([...new Set(s.ideas)].join(' / '))}</p>${external(s.url,'근거 원문 열기')}</div></article>`).join('');
 }
 function renderData(){
   const search=$('#data-search').value.trim().toLocaleLowerCase();
@@ -79,7 +80,7 @@ function renderData(){
 }
 $('#idea-filters').innerHTML=categories.map((c,i)=>`<button class="filter${i===0?' active':''}" type="button" aria-pressed="${i===0}" data-category="${e(c)}">${e(c)}</button>`).join('');
 $$('[data-category]').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$$('[data-category]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});renderIdeas();}));
-$$('input[type=range]').forEach(i=>i.addEventListener('input',renderIdeas));
+$$('#ideas input[type=range]').forEach(i=>i.addEventListener('input',renderIdeas));
 $('#reset-weights').addEventListener('click',()=>{['fit','feasibility','novelty'].forEach((n,i)=>$(`#weight-${n}`).value=[40,40,20][i]);renderIdeas();});
 $('#data-search').addEventListener('input',renderData);
 $('#close-dialog').addEventListener('click',()=>$('#idea-dialog').close());
