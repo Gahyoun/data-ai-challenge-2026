@@ -1,0 +1,31 @@
+{
+  "status": "user-specified research scenario; not empirically calibrated",
+  "updated": "2026-09-14",
+  "facilityPolicy": "existing sites only; capacity and operational/access improvements",
+  "services": ["상담센터", "공공열람실", "청소년문화체험센터"],
+  "mobility": {
+    "level": "high",
+    "meaning": "relatively broad walking time budget and independent public transport use",
+    "numericCalibration": null,
+    "retainConstraints": ["actual timetable", "fare", "safe feasible route", "return trip", "service eligibility"]
+  },
+  "scaling": {
+    "symbol": "alpha",
+    "meaning": "exponent of additional capacity versus positive unmet demand, per service and time slot",
+    "minInclusive": 0.6,
+    "maxExclusive": 1,
+    "initialIllustration": 0.8,
+    "uiMax": 0.99,
+    "uiStep": 0.01,
+    "empiricallyEstimated": false
+  },
+  "illustration": {
+    "synthetic": true,
+    "scope": "one service and one common time slot; continuous capacity equivalent; equal unit expansion cost",
+    "additionalCapacity": 40,
+    "facilities": [
+      {"name": "기존 시설 A", "demand": 140, "currentCapacity": 40, "expansionLimit": 40},
+      {"name": "기존 시설 B", "demand": 90, "currentCapacity": 40, "expansionLimit": 40}
+    ]
+  }
+}

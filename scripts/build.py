@@ -6,6 +6,9 @@ ROOT = Path(__file__).resolve().parents[1]
 payload = {}
 for key in ('ideas', 'datasets', 'profile'):
     payload[key] = json.loads((ROOT / 'data' / f'{key}.json').read_text(encoding='utf-8'))
+payload['youthScenario'] = json.loads((ROOT / 'data' / 'youth-scenario.json').read_text(encoding='utf-8'))
+scaling = payload['youthScenario']['scaling']
+assert 0.6 <= scaling['initialIllustration'] <= scaling['uiMax'] < scaling['maxExclusive'] == 1
 assert len({i['id'] for i in payload['ideas']}) == len(payload['ideas'])
 assert len({d['id'] for d in payload['datasets']}) == len(payload['datasets'])
 for idea in payload['ideas']:

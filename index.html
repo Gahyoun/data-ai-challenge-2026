@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="2026 데이터+AI 혁신 챌린지를 위한 네트워크·통계물리학 연구 아이디어, 공식 근거, 공공데이터 후보와 출품 전략.">
-  <meta name="theme-color" content="#2a72e5">
+  <meta name="theme-color" content="#ffd618">
   <title>연구 아이디어 보드 · 2026 DATA + AI</title>
   <link rel="icon" href="site/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
   <link rel="stylesheet" href="site/styles.css">
   <link rel="stylesheet" href="site/climate.css">
   <link rel="stylesheet" href="site/care.css">
+  <link rel="stylesheet" href="site/kakaopage.css">
   <script src="site/content.js" defer></script>
   <script src="site/app.js" defer></script>
   <script src="site/climate.js" defer></script>
@@ -42,7 +43,7 @@
   <div class="breadcrumb">2026 데이터+AI 혁신 챌린지 <span>/</span> <span id="crumb">아이디어 탐색</span></div>
   <section id="ideas" class="view">
     <div class="page-heading"><div><p class="eyebrow">QUESTION → EVIDENCE → EXPERIMENT</p><h1>어떤 문제에,<br class="mobile-only"> 우리의 방법을 쓸까.</h1><p class="intro">통계물리학과 복잡계 네트워크로 풀어볼 여섯 가지 질문.</p></div><span class="badge neutral">브레인스토밍 v3</span></div>
-    <div class="decision-panel"><div><span class="badge success">확장 검토</span><h2>기후쉼터에서 돌봄·복지로,<br>수요층의 이동 조건을 함께</h2><p>청소년·유소년·노년층의 보행·대중교통·동행 시나리오를 연결합니다. 같은 예산에서 시설·운영시간·보행 연결·픽업 중 무엇을 바꿀지 비교합니다.</p></div><div class="decision-actions"><a class="button primary" href="#care">돌봄·복지 확장안 보기 <span aria-hidden="true">→</span></a><a class="text-link" href="#climate">기후쉼터 모델 설계 보기 →</a><span class="meta">연구 제안이며 분석 결과가 아닙니다.</span></div></div>
+    <div class="decision-panel"><div><span class="badge success">확장 검토</span><h2>기후쉼터에서 돌봄·복지로,<br>수요층의 이동 조건을 함께</h2><p>청소년·유소년·노년층의 보행·대중교통·동행 시나리오를 연결합니다. 같은 예산에서 기존 시설의 수용량·운영시간·이동 연결을 어떻게 개선할지 비교합니다.</p></div><div class="decision-actions"><a class="button primary" href="#care">돌봄·복지 확장안 보기 <span aria-hidden="true">→</span></a><a class="text-link" href="#climate">기후쉼터 모델 설계 보기 →</a><span class="meta">연구 제안이며 분석 결과가 아닙니다.</span></div></div>
     <div class="board-layout"><div class="ideas-column"><div class="section-bar"><h2>후보 아이디어 <span id="idea-count" class="count"></span></h2><span class="meta">카드를 열어 연구 설계 확인</span></div><div class="filter-row" id="idea-filters" role="group" aria-label="아이디어 분야"></div><div id="idea-list" class="idea-list"></div></div>
     <aside class="weight-panel"><div class="panel-title"><h3>무엇을 더 중요하게 볼까요?</h3><button id="reset-weights" class="text-button" type="button">초기화</button></div><p>가중치를 조정하면 후보 순서가 바뀝니다.</p><label for="weight-fit">연구 적합성 <output id="value-fit">40%</output></label><input id="weight-fit" type="range" min="0" max="100" step="5" value="40"><label for="weight-feasibility">실행 가능성 <output id="value-feasibility">40%</output></label><input id="weight-feasibility" type="range" min="0" max="100" step="5" value="40"><label for="weight-novelty">신규성 <output id="value-novelty">20%</output></label><input id="weight-novelty" type="range" min="0" max="100" step="5" value="20"><div class="score-note"><b>점수는 토론을 위한 가설입니다.</b><p>각 항목 1–5점의 정성 평가를 가중 평균했습니다. 공식 심사점수·수상확률이 아니며, 참가자격 위험은 점수와 별개입니다.</p></div><a class="text-link" href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/methods-and-mvp.md" target="_blank">수식·널모형·MVP 설계 ↗</a></aside></div>
   </section>
@@ -61,8 +62,8 @@
   <!-- climate-end -->
   <!-- care-start -->
   <section id="care" class="view" hidden>
-    <div class="page-heading"><div><p class="eyebrow">NEXT QUESTION · CARE ACCESSIBILITY</p><h1>누구에게는 가까운 시설,<br>누구에게는 닿지 않는 돌봄.</h1><p class="intro">보행 · 대중교통 · 동행을 연결해 수요층별 접근 공백과 개선안을 비교합니다.</p></div><span class="badge info">확장 검토 · 2026.09.14</span></div>
-    <div class="callout"><b>같은 예산으로, 필요한 서비스를 이용하고 돌아올 수 있는 사람을 얼마나 늘릴까?</b><p>시설 입지뿐 아니라 운영시간·정원·횡단 연결·환승·픽업을 함께 검토합니다. 기후쉼터에서 출발한 확장안이며, 실제 지역의 최적화 결과는 아직 없습니다.</p></div>
+    <div class="page-heading"><div><p class="eyebrow">NEXT QUESTION · CARE ACCESSIBILITY</p><h1>누구에게는 가까운 시설,<br>누구에게는 닿지 않는 돌봄.</h1><p class="intro">보행 · 대중교통 · 동행을 연결해 수요층별 접근 공백과 기존 시설의 확충·개선안을 비교합니다.</p></div><span class="badge info">확장 검토 · 2026.09.14</span></div>
+    <div class="callout"><b>같은 예산으로, 필요한 서비스를 이용하고 돌아올 수 있는 사람을 얼마나 늘릴까?</b><p>기존 시설 위치를 고정하고 수용량·운영시간·인력·횡단 연결·환승·픽업을 함께 개선합니다. 신규 시설 건설은 이번 범위에서 제외합니다. 기후쉼터에서 출발한 확장안이며, 실제 지역의 최적화 결과는 아직 없습니다.</p></div>
     <article class="care-lab">
       <div class="section-bar"><h2>수요층에 따라 달라지는 이동 조건</h2><span class="badge neutral">연구 시나리오 예시</span></div>
       <p>연령은 집단 구성에 사용하고, 보행 능력·교통 공급·동행 가능성은 따로 설정합니다. 아래 특성은 실측된 연령별 평균이 아닙니다.</p>
@@ -77,7 +78,7 @@
     <p class="meta">비교기간과 예산을 맞추고 시설비·운영비·인건비를 함께 계산합니다. 단가를 확보하지 못하면 비용 범위별 민감도를 제시합니다.</p>
     <div class="two-column"><article class="plain-card"><span class="badge info">복잡계 네트워크</span><h2>같은 인프라, 다른 유효 연결망</h2><p>보행 시간·계단·환승·보호자 시간창을 바꾸며 집단별 서비스 도달성이 어떻게 변하는지 봅니다. 거대 연결요소의 크기만으로 돌봄 접근성을 대신하지 않습니다.</p><p>보행 개선과 정원 확대를 함께 할 때 단독 개선 효과의 합을 넘는지 검증합니다. 2/3 스케일링은 단순한 동일 서비스 기준선에 남기고, 다층 시각표·정원·인계 조건에 같은 지수를 강제하지 않습니다.</p></article><article class="plain-card"><span class="badge info">ABM으로 확장</span><h2>가능한 배정과 실제 행동을 비교</h2><p>시간의존 경로와 정원 제약 배정부터 시작합니다. 이후 대기·재선택·예약·보호자 일정 충돌을 넣어 시뮬레이션합니다.</p><p>전체 및 집단별 미충족률, 이동·대기 분포, 보호자 시간 부담을 비교합니다. 평균 개선과 집단별 형평성을 함께 봅니다.</p></article></div>
     <article class="care-source"><span class="badge success">확인한 공식 근거</span><h2>운영시간과 시각표를 실제 데이터로</h2><p>보건복지부의 2026년 야간 연장돌봄 안내에는 참여시설별 종료시간 차이와 지정 보호자 인계 조건이 있습니다. KTDB는 2026년 9월 전국 GTFS 기반정보 제공을 공지했습니다.</p><p class="meta">GTFS의 기준은 2025년 3월 평일 1일입니다. 자료신청이 필요하고 ID가 비표준인 파일럿 자료이며, 2026년 현행·주말·실시간 자료는 아닙니다. 이번 검토에서 원자료를 수령하지 않았습니다.</p><p><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148958411" target="_blank" rel="noopener noreferrer">보건복지부 · 2026.01.22 ↗</a> · <a href="https://www.ktdb.go.kr/www/selectBbsNttView.do?bbsNo=2&amp;key=45&amp;nttNo=3825" target="_blank" rel="noopener noreferrer">KTDB · 2026.09.07 ↗</a></p></article>
-    <div class="callout"><b>첫 구현 제안: 한 자치구 · 초등 방과후 돌봄 · 평일 오후부터 귀가까지</b><p>공통 시점의 시설·보행·시각표 자료를 확보한 뒤 지역을 고릅니다. 이후 노년층의 특정 프로그램과 청소년 서비스에 각각 적용합니다. 원자료 확보·실제 경로 계산·ABM·문제해결은행 실행은 아직 하지 않았습니다.</p></div>
+    <div class="callout"><b>첫 구현 제안: 한 자치구 · 초등 방과후 돌봄 · 평일 오후부터 귀가까지</b><p>공통 시점의 시설·보행·시각표 자료를 확보한 뒤 지역을 고릅니다. 이후 노년층의 특정 프로그램과 청소년의 상담센터·공공열람실·청소년문화체험센터에 각각 적용합니다. 원자료 확보·실제 경로 계산·ABM·문제해결은행 실행은 아직 하지 않았습니다.</p></div>
     <p class="care-docs"><a class="button primary" href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/care-accessibility.md" target="_blank" rel="noopener noreferrer">목적함수·제약·비교 실험 ↗</a><a class="button" href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/care-data-sources.md" target="_blank" rel="noopener noreferrer">추가 데이터 후보와 필드 ↗</a><a class="text-link" href="#climate">기후쉼터 설계로 돌아가기 →</a></p>
   </section>
   <!-- care-end -->
@@ -93,7 +94,7 @@
   <section id="plan" class="view" hidden><div class="page-heading"><div><p class="eyebrow">FROM IDEA TO SUBMISSION</p><h1>분석이 제출물까지 이어지도록</h1><p class="intro">첫 관문은 데이터 확보와 워크스튜디오의 실제 실행입니다.</p></div></div><div class="summary-strip"><div><span>접수 마감</span><b>2026.10.22</b><small>마감시각 별도 확인</small></div><div><span>팀 구성</span><b>최대 5명</b><small>개인 참가도 가능</small></div><div><span>필수 결과물</span><b>JSON + URL</b><small>워크플로우 · 레시피 · 신청서</small></div></div><div class="callout warning"><b>워크스튜디오 기능은 로그인 이후 확인이 필요합니다.</b><p>공개 메뉴의 노코드 분석 소개와 로그인 필요 안내까지 확인했습니다. NetworkX·Python·GIS 지원, 모델 종류, 업로드 한도는 검증하지 않았습니다. 이 페이지에 제출용 워크플로우나 실증 분석 결과는 없습니다.</p></div>
     <h2 class="standalone-heading">첫 48시간의 확인 항목</h2><ol class="steps"><li><span>01</span><div><h3>샘플 CSV로 실제 실행</h3><p>업로드 규격, 전처리·분석 노드, 결측 처리와 파라미터를 기록합니다.</p></div></li><li><span>02</span><div><h3>JSON 내보내기와 URL 재현</h3><p>저장된 결과를 다시 열고, 심사자 접근과 공유 방식을 확인합니다.</p></div></li><li><span>03</span><div><h3>외부 분석의 인정 범위 확인</h3><p>외부 GIS/네트워크 지표와 포털 내부 핵심 분석의 역할 분담을 문의합니다.</p></div></li><li><span>04</span><div><h3>한 지역·한 질문으로 범위 고정</h3><p>샘플 확보와 실행 검증이 통과된 독립 주제 하나를 선택합니다.</p></div></li></ol>
     <div class="section-bar"><h2>제출까지의 작업 계획</h2><span class="meta">권장 일정 · 확정 활동 아님</span></div><div class="timeline"><div><b>9/14 — 9/23</b><h3>가능성 검증</h3><p>도구·데이터·권리·주제 확정</p></div><div><b>9/24 — 10/04</b><h3>모형과 비교</h3><p>기준모형·널모형·민감도</p></div><div><b>10/05 — 10/12</b><h3>포털 재현</h3><p>워크플로우·레시피·분석 해석</p></div><div><b>10/13 — 10/20</b><h3>검토와 제출 준비</h3><p>결과·AI 고지·JSON/URL 점검</p></div></div><div class="two-column"><article class="plain-panel"><h2>예선 평가 기준</h2><div id="rubric" class="rubric"></div></article><article class="plain-panel"><h2>기록해야 하는 것</h2><ul><li>데이터 출처·버전·갱신연도·라이선스</li><li>좌표계·조인 키·결측·제외 기준</li><li>기준모형·파라미터·난수 시드·비교 결과</li><li>생성형 AI를 사용한 범위와 사람의 검토</li><li>기존 연구 인용과 새 기여의 구분</li></ul></article></div><div class="document-link"><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/competition-and-tool-fit.md" target="_blank">공모 요건·신청서 항목·문의 초안 전체 ↗</a></div></section>
-  <footer><span>공개 근거에서 시작해, 검증 가능한 질문으로.</span><div><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/README.md" target="_blank">프로젝트 안내</a><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/methods-and-mvp.md" target="_blank">방법론 메모</a><a href="https://oh-my-design.kr/design-systems/goorm" target="_blank" rel="noopener noreferrer">Design reference · goorm ↗</a></div><p>공개 자료 기반의 AI 보조 브레인스토밍 · 연구자 본인 및 기관의 공식 의견이 아닙니다.</p></footer>
+  <footer><span>공개 근거에서 시작해, 검증 가능한 질문으로.</span><div><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/README.md" target="_blank">프로젝트 안내</a><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/methods-and-mvp.md" target="_blank">방법론 메모</a><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/design-theme.md" target="_blank" rel="noopener noreferrer">Design reference · KakaoPage ↗</a></div><p>공개 자료 기반의 AI 보조 브레인스토밍 · 연구자 본인 및 기관의 공식 의견이 아닙니다.</p></footer>
 </main></div>
 <dialog id="idea-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="eyebrow">RESEARCH CARD</span><button id="close-dialog" class="icon-button" aria-label="아이디어 상세 닫기">×</button></div><div id="idea-detail"></div></dialog>
 <noscript><p>이 보드의 탐색 기능에는 JavaScript가 필요합니다. <a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/README.md">프로젝트 안내</a>와 <a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/needs-and-ideas.md">연구 문서</a>에서 전체 내용을 읽을 수 있습니다.</p></noscript>

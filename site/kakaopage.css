@@ -1,0 +1,332 @@
+/* KakaoPage-inspired palette and controls, adapted for a research board.
+   Reference: the user-provided DESIGN (1).md, dated 2026-06-22.
+   Load after the base, climate, and care styles. No brand artwork is used. */
+:root {
+  --primary: #000000;
+  --active: #000000;
+  --link: #000000;
+  --ink: #000000;
+  --secondary: #000000;
+  --muted: #666666;
+  --surface: #eeeeee;
+  --line: #dddddd;
+  --strong: #aaaaaa;
+  --blue-tint: #eeeeee;
+  --green-tint: #eeeeee;
+  --orange-tint: #eeeeee;
+  --cta: #ffd618;
+  --on-cta: #222222;
+  --radius: 8px;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, system-ui,
+    "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+.topbar,
+.sidebar,
+dialog {
+  background: #ffffff;
+}
+
+.brand-mark {
+  background: #000000;
+  color: #ffffff;
+}
+
+.brand-meta,
+.edition {
+  letter-spacing: 1px;
+}
+
+.page-heading h1 {
+  font-weight: 700;
+}
+
+.sidebar nav a {
+  border-radius: 100px;
+  color: #000000;
+}
+
+.sidebar nav a:hover {
+  background: #eeeeee;
+}
+
+.sidebar nav a.active,
+.sidebar nav a.active:hover {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.sidebar nav a.active > span {
+  color: #ffffff;
+}
+
+.filter {
+  border-radius: 100px;
+  color: #000000;
+}
+
+.filter.active,
+.filter.active:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.button {
+  color: #000000;
+  font-weight: 700;
+  border-color: #aaaaaa;
+  background: #ffffff;
+}
+
+.button:hover {
+  background: #eeeeee;
+  border-color: #000000;
+}
+
+.button.primary,
+.button.primary:hover {
+  background: var(--cta);
+  color: var(--on-cta);
+  border-color: var(--cta);
+  min-height: 56px;
+  border-radius: 8px;
+}
+
+.button.primary:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #000000;
+  outline-offset: 4px;
+}
+
+.search:focus-within {
+  outline: 3px solid #000000;
+  outline-offset: 4px;
+}
+
+.search input:focus-visible {
+  outline: none;
+}
+
+.badge,
+.badge.neutral,
+.badge.success,
+.badge.warning,
+.badge.info {
+  color: #000000;
+  background: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.decision-panel {
+  border-color: #dddddd;
+  border-left-color: #000000;
+  background: #eeeeee;
+}
+
+.decision-panel .badge,
+.idea-card .badge {
+  background: #ffffff;
+}
+
+.idea-card {
+  background: #eeeeee;
+  border-color: #eeeeee;
+}
+
+.idea-card:hover {
+  background: #eeeeee;
+  border-color: #000000;
+}
+
+.idea-card.featured {
+  border-left-color: #000000;
+}
+
+.idea-card h3 {
+  font-weight: 700;
+}
+
+.card-method span {
+  color: #666666;
+  background: #ffffff;
+  border-color: #dddddd;
+  border-radius: 5px;
+}
+
+.card-score .arrow,
+.text-button,
+.weight-panel output,
+.flow-connector,
+.steps li > span,
+.timeline b,
+.scaling-controls output,
+.care-route li span,
+.care-layers article > span,
+.care-sequence b,
+.youth-expansion output {
+  color: #000000;
+}
+
+.weight-panel,
+.profile-card,
+.evidence-card,
+.care-layers article,
+.care-service-grid article {
+  background: #eeeeee;
+  border-color: #eeeeee;
+}
+
+.weight-panel {
+  background: #ffffff;
+  border-color: #dddddd;
+}
+
+.callout,
+.callout.warning {
+  background: #eeeeee;
+  border-color: #dddddd;
+}
+
+.callout.warning b {
+  color: #000000;
+}
+
+.plain-panel,
+.scaling-lab,
+.care-lab,
+.care-source {
+  background: #ffffff;
+  border-color: #dddddd;
+}
+
+.method-panel,
+.dataset .detail-body,
+.empty-state,
+.care-route li {
+  background: #eeeeee;
+  border-color: #dddddd;
+}
+
+.network-flow > div,
+.care-sequence span {
+  background: #ffffff;
+  border-color: #aaaaaa;
+}
+
+.search {
+  background: #eeeeee;
+  border-color: #eeeeee;
+}
+
+.search input::placeholder {
+  color: #666666;
+  opacity: 1;
+}
+
+.text-link,
+.source-links a,
+.document-link a,
+.care-source a {
+  text-decoration-thickness: 1px;
+}
+
+input[type="range"] {
+  accent-color: #000000;
+}
+
+.rubric-track {
+  background: #eeeeee;
+}
+
+.rubric-track > span {
+  background: #666666;
+}
+
+.allocation-track {
+  background: #dddddd;
+}
+
+.allocation-track > span {
+  background: #777777;
+}
+
+.allocation-track.theory > span {
+  background: #000000;
+}
+
+.formula-line {
+  border-left-color: #000000;
+}
+
+th {
+  background: #eeeeee;
+  color: #000000;
+  font-weight: 700;
+}
+
+dialog {
+  border-color: #aaaaaa;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.icon-button {
+  background: #eeeeee;
+  color: #000000;
+  border-color: #eeeeee;
+  border-radius: 100px;
+}
+
+.icon-button:hover {
+  border-color: #000000;
+}
+
+@media (max-width: 740px) {
+  .sidebar nav a,
+  .filter {
+    min-height: 40px;
+  }
+
+  .care-docs .button,
+  .decision-actions .button {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media print {
+  body,
+  .idea-card,
+  .decision-panel,
+  .profile-card,
+  .evidence-card,
+  .care-layers article,
+  .care-service-grid article {
+    background: #ffffff;
+    color: #000000;
+  }
+}
