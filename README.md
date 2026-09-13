@@ -14,8 +14,12 @@
 
 ## 문서와 데이터
 
+**[아이디어별 수식·레퍼런스](https://gahyoun.github.io/data-ai-challenge-2026/#methods)**에서 기존 6개 후보와 돌봄 확장안의 핵심 수식 2개씩, 기호·적용 가정·비교 실험과 관련 논문을 볼 수 있다. 각 아이디어 상세 카드와 돌봄 화면에서도 확인할 수 있다. 논문의 방법과 이번 연구의 확장식을 구분했다.
+
 | 파일 | 내용 |
 |---|---|
+| [수식과 참고문헌](research/formulas-and-references.md) | 7개 설계 · 14개 수식 · 논문별 지지 범위와 적용 한계 |
+| [방법론 JSON](data/methods.json) | 화면과 수식 문서를 함께 생성하는 원본 |
 | [돌봄·복지 접근성](research/care-accessibility.md) | 수요층·서비스 자격·다층 시간망·목적함수·개선 실험 |
 | [돌봄 추가 데이터](research/care-data-sources.md) | 시설 대상·정원·시간, 스쿨존, GTFS 등 6개 후보 |
 | [청소년 시나리오 설정](data/youth-scenario.json) | 고정 시설·높은 mobility·세 서비스·0.6 ≤ α < 1·가상 증설 예시 |
