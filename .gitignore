@@ -1,0 +1,10 @@
+.DS_Store
+.sites-runtime/
+node_modules/
+tmp/
+qa/
+*.pdf
+*.png
+*.zip
+.env*
+!data/*.json

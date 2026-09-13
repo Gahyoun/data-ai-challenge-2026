@@ -1,0 +1,59 @@
+{
+  "as_of": "2026-09-13",
+  "evidence_policy": "공개 연구활동의 관찰과 이번 검토의 추론을 구분한다. 성격 진단·친분의 강도·참여 또는 보증을 추정하지 않는다. 2026년 4분기 미래 사실은 확정하지 않는다.",
+  "people": [
+    {
+      "name": "김가현 · Gahyoun Gim",
+      "nameEvidence": "GNU 연구실 구성원 목록에 Gahyoun Gim (김가현)으로 병기. https://sites.google.com/view/netscilab/members",
+      "url": "https://sites.google.com/view/gahyoun-official/main-page",
+      "observed": "지식 구조와 복잡계를 모형화하는 데이터과학자로 소개한다. 교육과정 시너지·지역별 고등교육 분포·철도망·경찰 모빌리티를 연구 아카이브에 공개했다.",
+      "inference": "공공데이터를 이론적 지표와 공개 지도·대시보드로 연결하는 작업 성향이 관찰된다. 개인 성격에 대한 단정은 아니다.",
+      "fit": "교육·지역 불균형·공공서비스 접근성을 정보이론과 공간 네트워크로 검정하는 문제가 가장 직접적인 접점이다.",
+      "sources": ["https://sites.google.com/view/gahyoun-official/research-archive", "https://arxiv.org/abs/2502.17841", "https://arxiv.org/abs/2406.19679"]
+    },
+    {
+      "name": "이상훈 · Sang Hoon Lee / GNU Network Science Lab",
+      "url": "https://sites.google.com/view/netscilab/members",
+      "observed": "네트워크의 숨은 구조와 동역학을 연구한다. 정보엔트로피 기반 의존관계, 분배함수 기반 재규격화 연구 및 사용자와의 교육 연구 공저가 확인된다.",
+      "inference": "스케일 선택, 공간 영모형, 지표의 의미와 불확실성을 검증하는 방법론과 연결할 수 있다.",
+      "fit": "평균 접근성뿐 아니라 구조적 불균형·연결성·정책 대안의 안정성을 측정하는 분석.",
+      "sources": ["https://sites.google.com/view/netscilab/", "https://arxiv.org/abs/2008.11047", "https://arxiv.org/abs/2403.07402"]
+    },
+    {
+      "name": "엄영호 · Young-Ho Eom / CSNS Lab",
+      "url": "https://sites.google.com/view/csns-lab/home",
+      "observed": "복잡계·네트워크·과학의 과학·도시과학을 연구하며 교통 혼잡 전파와 퍼콜레이션, 도시 인구 분포 퍼콜레이션 연구를 공개했다.",
+      "inference": "지역 내부·지역 간 이동망의 연결, 시간대 변화, 병목 분석으로 방법론을 확장할 수 있다.",
+      "fit": "지형·혼잡 제약으로 공공서비스권이 단절되는 조건과 대체 경로의 효과 분석.",
+      "sources": ["https://sites.google.com/view/csns-lab/home/publications", "https://arxiv.org/abs/2408.08504"]
+    },
+    {
+      "name": "이병휘 · Byunghwee Lee",
+      "nameEvidence": "개인 홈페이지 소개 첫 문장에 Byunghwee Lee (이병휘)로 병기. https://byunghweelee-iu.github.io/",
+      "url": "https://byunghweelee-iu.github.io/",
+      "observed": "해석 가능한 정량 모형, LLM 기반 신념 표현, 문화 분석, 집단행동과 네트워크를 연구한다고 소개한다.",
+      "inference": "정책·교육 텍스트의 구조화와 AI 분류 결과의 해석가능성 검증에 방법론 접점이 있다.",
+      "fit": "LLM은 문서 정리·분류를 담당하고 공간 최적화 결과는 수치 모형으로 재현하는 연구 설계.",
+      "sources": ["https://byunghweelee-iu.github.io/", "https://arxiv.org/abs/2008.11047"]
+    },
+    {
+      "name": "윤진혁 · Jinhyuk Yun",
+      "url": "https://bluekura.github.io/",
+      "observed": "집단지식 플랫폼, 과학·기술의 진화, AI 에이전트와 지식 확산을 연구한다. 사용자와의 교육 시너지 공저 및 범죄·사회환경 연구가 있다.",
+      "inference": "지식과 교육의 불균형을 측정하고 AI가 만드는 분류·설명의 타당성을 점검하는 데 접점이 있다.",
+      "fit": "교육·공공지식의 접근성과 사회적 효용을 설명하는 도구; 치안에서는 서비스 공백과 범죄 위험을 구분.",
+      "sources": ["https://bluekura.github.io/", "https://arxiv.org/abs/2502.17841", "https://arxiv.org/abs/2203.14077"]
+    }
+  ],
+  "reuse": {
+    "status": "조건부 후보 · 실질 유사성 사전 확인 필요",
+    "existing_repo": "https://github.com/Gahyoun/korea-police-infrastructure-map",
+    "baseline_commit": "e94cd9a99c610c5989b1a8450076f115588e1993",
+    "baseline_date": "2026-07-02",
+    "already_present": ["도로망 순찰 최적화", "규칙 기반 확률 에이전트", "최단 도달시간 접근성", "방문·접근성·시설 복합지표"],
+    "proposed_contribution": ["유향 경사·보도 연결·에너지로 제한되는 서비스권", "지역 내 저속망과 지역 간 차량 지원망의 결합", "동일 예산 비교·영모형·제거실험·불확실성"],
+    "award_evidence": "사용자 수상 완료 진술 및 개인 아카이브 우수상 기재 확인. 주최측 결과 페이지는 502로 독립 확인하지 못함. 메인 홈페이지의 Oct. 2026과 아카이브의 2026.08.12 본선 날짜는 구분해 기록.",
+    "award_sources": ["https://sites.google.com/view/gahyoun-official/main-page", "https://sites.google.com/view/gahyoun-official/research-archive", "https://kipot.or.kr/user/ex19.do"],
+    "recommendation": "교육·생활서비스 및 폭염 쉼터 접근성의 독립 문제를 우선 검토한다. 침수안은 지도 가공·공개 이용조건 확인 전까지 보류한다. 치안 확장은 기존 수상작과 차별성 표를 만든 뒤 주최측의 서면 적격 확인을 받는다. 명칭·경사도 레이어 추가만으로 신규성을 주장하지 않는다."
+  }
+}
