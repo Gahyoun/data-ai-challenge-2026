@@ -48,6 +48,10 @@ function navigate(){
   if(parent&&view==='idea-page'){
     const html=!page?renderParent(parent):page.kind==='methods'?renderMethodPage(parent):page.kind==='data'?renderParentData(parent):renderPlanSection(parent,page);
     $('#idea-page').innerHTML=subnav(parent,page?.id)+html;
+    if(parent.id==='disaster'&&page?.id==='percolation'){
+      $('#idea-page .page-heading').insertAdjacentHTML('afterend','<div id="percolation-demo"></div>');
+      window.renderPercolationDemo?.($('#percolation-demo'));
+    }
   }
   $$('.page-subnav').forEach(node=>node.remove());
   if(parent&&['care','climate'].includes(view)){

@@ -1,0 +1,64 @@
+.percolation-demo {
+  min-width: 0;
+  margin: 28px 0;
+  padding: 26px;
+  border: 1px solid var(--line, #ddd);
+  border-radius: 12px;
+  background: #fff;
+}
+.percolation-demo * { min-width: 0; }
+.percolation-demo-heading h2 { margin: 12px 0 10px; font-size: 25px; line-height: 1.45; }
+.percolation-demo-heading p { font-size: 14px; line-height: 1.8; }
+.percolation-demo-tag { display: inline-block; padding: 5px 10px; border-radius: 5px; background: var(--surface, #eee); font-size: 12px; font-weight: 650; }
+.percolation-demo-controls { margin: 22px 0 8px; }
+.percolation-demo-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.percolation-demo-steps button { min-height: 44px; padding: 8px 10px; border: 1px solid var(--line, #ddd); border-radius: 7px; background: #fff; color: var(--ink, #000); font: inherit; font-size: 13px; line-height: 1.5; white-space: normal; }
+.percolation-demo-steps button:hover { background: var(--surface, #eee); }
+.percolation-demo-steps button[aria-pressed="true"] { background: #000; border-color: #000; color: #fff; }
+.percolation-demo-slider { display: block; margin-top: 17px; }
+.percolation-demo-slider > span { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; }
+.percolation-demo-slider input { display: block; width: 100%; height: 36px; margin: 2px 0; accent-color: #000; }
+.percolation-demo-q { color: var(--muted, #666); font-size: 12px; line-height: 1.7; font-variant-numeric: tabular-nums; }
+.percolation-demo-layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(180px, 1fr); align-items: center; gap: 22px; margin-top: 8px; }
+.percolation-demo-figure { margin: 0; }
+.percolation-demo-network svg { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; overflow: visible; }
+.percolation-demo-figure figcaption { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin-top: 2px; color: var(--muted, #666); font-size: 11px; line-height: 1.8; }
+.percolation-demo-edge line { stroke: #888; stroke-width: 5; }
+.percolation-demo-edge.is-cut line { stroke: #aaa; stroke-width: 3; stroke-dasharray: 7 7; }
+.percolation-demo-cut { display: none; fill: #000; stroke: #fff; stroke-width: 7px; paint-order: stroke; font-family: sans-serif; font-size: 31px; font-weight: 700; }
+.percolation-demo-edge.is-cut .percolation-demo-cut { display: block; }
+.percolation-demo-node circle { fill: #eee; stroke: #000; stroke-width: 2.5; }
+.percolation-demo-node.is-largest > circle:first-child { fill: #000; }
+.percolation-demo-node-id { fill: #000; font-size: 22px; font-weight: 700; }
+.percolation-demo-node.is-largest .percolation-demo-node-id { fill: #fff; }
+.percolation-demo-node-population { fill: #222; font-size: 22px; stroke: #fff; stroke-width: 5px; paint-order: stroke; }
+.percolation-demo-node circle.percolation-demo-medical { fill: #fff; stroke: #000; stroke-width: 2.5; }
+.percolation-demo-medical-cross { fill: none; stroke: #000; stroke-width: 2.5; }
+.percolation-demo-metrics dl { margin: 0; }
+.percolation-demo-metrics dl > div { padding: 14px 0; border-bottom: 1px solid var(--line, #ddd); }
+.percolation-demo-metrics dl > div:last-child { border-bottom: 0; }
+.percolation-demo-metrics dt { margin: 0 0 3px; font-size: 12px; font-weight: 600; line-height: 1.6; }
+.percolation-demo-metrics dd { margin: 0; color: #000; font-size: 32px; font-weight: 750; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.percolation-demo-metrics small { display: block; margin-top: 3px; color: var(--muted, #666); font-size: 11px; font-weight: 400; line-height: 1.7; }
+.percolation-demo-explanation { min-height: 4em; margin: 22px 0 10px; padding: 16px 18px; border-radius: 8px; background: var(--surface, #eee); color: #000; font-size: 14px; line-height: 1.85; }
+.percolation-demo-members { color: var(--muted, #666); font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
+.percolation-demo-insight { margin-top: 20px; font-size: 15px; font-weight: 700; line-height: 1.8; }
+.percolation-demo-limit { margin-top: 8px; color: var(--muted, #666); font-size: 12px; line-height: 1.85; }
+@media (max-width: 780px) {
+  .percolation-demo { padding: 20px; }
+  .percolation-demo-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .percolation-demo-network svg { max-width: 520px; }
+  .percolation-demo-metrics dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .percolation-demo-metrics dl > div { padding: 12px 0; border-top: 1px solid var(--line, #ddd); border-bottom: 0; }
+  .percolation-demo-metrics dd { font-size: 27px; }
+}
+@media (max-width: 460px) {
+  .percolation-demo { padding: 16px 12px; }
+  .percolation-demo-heading h2 { font-size: 21px; }
+  .percolation-demo-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .percolation-demo-metrics dl { gap: 8px; }
+  .percolation-demo-metrics dt { min-height: 3.2em; font-size: 11px; }
+  .percolation-demo-metrics dd { font-size: 23px; }
+  .percolation-demo-metrics small { font-size: 10px; }
+  .percolation-demo-explanation { padding: 14px; }
+}
