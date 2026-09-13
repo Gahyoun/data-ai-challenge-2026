@@ -1,0 +1,53 @@
+/* Load after KaTeX and the page styles. Overflow stays inside each equation. */
+[data-latex].research-math {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  contain: inline-size;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-height: 1.6;
+}
+
+.research-math:focus-visible {
+  outline: 2px solid var(--ink, #222);
+  outline-offset: 3px;
+}
+
+.research-math .katex-display {
+  margin: 0.4em 0;
+  text-align: left;
+}
+
+.research-math .katex-display > .katex {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.research-math-source {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.85em;
+}
+
+.research-math-status {
+  display: block;
+  margin-top: 10px;
+  color: var(--secondary, #666);
+  font-family: "Pretendard Variable", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+@media (max-width: 740px) {
+  .research-math .katex { font-size: 1.05em; }
+}

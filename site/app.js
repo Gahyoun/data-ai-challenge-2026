@@ -7,13 +7,11 @@ const safeURL = value => { try { const u = new URL(value); return ['https:', 'ht
 const external = (url, title) => `<a href="${safeURL(url)}" target="_blank" rel="noopener noreferrer">${e(title)} ↗</a>`;
 const ideas = window.RESEARCH.ideas;
 const datasets = window.RESEARCH.datasets;
-const people = window.RESEARCH.profile.people;
 const methods = window.RESEARCH.methods.entries;
-const routes = {ideas:'아이디어 탐색',climate:'기후쉼터 모델 설계',care:'돌봄·복지 접근성',methods:'수식·레퍼런스',profile:'연구자와 관심사',evidence:'현안과 근거',data:'공공데이터 후보',reuse:'치안 프로젝트 확장',plan:'공모 요건과 실행계획'};
-const categories = ['전체','교육','환경','교통','모빌리티','치안'];
+const categories = ['전체','교육','환경','교통','모빌리티'];
 const tags = {
   'slope-patrol':['다층 네트워크','에너지 제약','공정 배치'],
-  'heat-access':['이질적 에이전트','시설 배치 스케일링','정원·운영시간'],
+  'heat-access':['연령대 맞춤','기존 시설 확충','이동 연결'],
   'flood-resilience':['퍼콜레이션','도로 회복력','공간 널모형'],
   'school-access':['이분 네트워크','공급 용량','접근성 형평성'],
   'drt-access':['시간표 네트워크','환승·대기','DRT 시나리오'],
@@ -27,28 +25,20 @@ const bundle = {
   'drt-access':['D01','D08','D09','D10','D16'],
   'highway-local':['D01','D03','D11','D12','D15']
 };
-const gate = {'slope-patrol':'참가자격 확인','flood-resilience':'데이터 권리 확인','highway-local':'시계열 확보 필요'};
+const gate = {'slope-patrol':'참가자격 확인','flood-resilience':'통제·시설 이력 확인','highway-local':'시계열 확보 필요'};
 let category = '전체';
-let activeCard = null;
 function methodBody(m){
-  return `<p class="method-approach">${e(m.approach)}</p><div class="equation-list">${m.equations.map((q,n)=>`<section class="equation-note"><p class="equation-label"><b>${String(n+1).padStart(2,'0')} · ${e(q.label)}</b></p><div class="equation-display">${q.display.split('\n').map(line=>`<div>${e(line)}</div>`).join('')}</div><p class="equation-meaning">${e(q.meaning)}</p></section>`).join('')}</div><details class="method-assumptions"><summary>적용 가정과 비교 실험</summary>${m.equations.map(q=>`<p><b>${e(q.label)}</b><br>${e(q.scope)}</p>`).join('')}<p><b>비교 실험과 해석</b><br>${e(m.baseline)}</p></details><div class="method-refs"><h3>관련 레퍼런스</h3><ol>${m.references.map(r=>`<li>${external(r.url,r.title)}<p class="meta">${e(r.authors)} (${e(r.year)}) · ${e(r.venue)}</p><p>${e(r.support)}</p><span class="meta">${external(`https://doi.org/${r.doi}`,`DOI ${r.doi}`)}</span></li>`).join('')}</ol></div>`;
+  return `<p class="method-approach">${e(m.approach)}</p><div class="equation-list">${m.equations.map((q,n)=>`<section class="equation-note"><p class="equation-label"><b>${String(n+1).padStart(2,'0')} · ${e(q.label)}</b></p><div class="equation-display" data-latex="${e(q.latex)}">${e(q.display)}</div><p class="equation-meaning">${e(q.meaning)}</p></section>`).join('')}</div><details class="method-assumptions"><summary>적용 가정과 비교 실험</summary>${m.equations.map(q=>`<p><b>${e(q.label)}</b><br>${e(q.scope)}</p>`).join('')}<p><b>비교 실험과 해석</b><br>${e(m.baseline)}</p></details><div class="method-refs"><h3>관련 레퍼런스</h3><ol>${m.references.map(r=>`<li>${external(r.url,r.title)}<p class="meta">${e(r.authors)} (${e(r.year)}) · ${e(r.venue)}</p><p>${e(r.support)}</p><span class="meta">${external(`https://doi.org/${r.doi}`,`DOI ${r.doi}`)}</span></li>`).join('')}</ol></div>`;
 }
 function renderMethods(selected='all'){
-  $('#method-filters').innerHTML=[{id:'all',shortTitle:'전체 7개'},...methods].map(m=>`<button type="button" class="filter${m.id===selected?' active':''}" data-method-filter="${e(m.id)}" aria-pressed="${m.id===selected}">${e(m.shortTitle)}</button>`).join('');
+  $('#method-filters').innerHTML=[{id:'all',shortTitle:`전체 ${methods.length}개`},...methods].map(m=>`<button type="button" class="filter${m.id===selected?' active':''}" data-method-filter="${e(m.id)}" aria-pressed="${m.id===selected}">${e(m.shortTitle)}</button>`).join('');
   $('#method-list').innerHTML=methods.filter(m=>selected==='all'||m.id===selected).map(m=>`<article class="method-note"><header><span class="badge neutral">${e(m.shortTitle)}</span><h2>${e(m.title)}</h2><p>${e(m.summary)}</p></header>${methodBody(m)}</article>`).join('');
+  window.renderResearchMath?.($('#method-list'));
   $$('[data-method-filter]').forEach(b=>b.addEventListener('click',()=>{
     const id=b.dataset.methodFilter;
     renderMethods(id);
     $(`[data-method-filter="${id}"]`).focus({preventScroll:true});
   }));
-}
-function navigate(){
-  const key = Object.hasOwn(routes, location.hash.slice(1)) ? location.hash.slice(1) : 'ideas';
-  $$('.view').forEach(s => { s.hidden = s.id !== key; });
-  $$('[data-route]').forEach(a => { const active = a.dataset.route === key; a.classList.toggle('active',active); if(active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
-  $('#crumb').textContent = routes[key];
-  document.title = `${routes[key]} · 2026 DATA + AI`;
-  window.scrollTo(0,0);
 }
 function weights(){
   const names=['fit','feasibility','novelty'];
@@ -64,29 +54,15 @@ function renderIdeas(){
   const w=weights();
   const rank=ideas.map((i,index)=>({...i,index,score:i.fitScore*w[0]+i.feasibilityScore*w[1]+i.noveltyScore*w[2]})).filter(i=>category==='전체'||i.domain.includes(category)).sort((a,b)=>b.score-a.score||a.index-b.index);
   $('#idea-count').textContent = rank.length;
-  $('#nav-count').textContent = ideas.length;
-  $('#idea-list').innerHTML=rank.map(i=>`<button class="idea-card${i.id==='heat-access'?' featured':''}" data-idea="${e(i.id)}" aria-haspopup="dialog" aria-label="${e(i.title)} 상세 보기"><div><div class="card-kicker"><span>${String(i.index+1).padStart(2,'0')} / ${e(i.domain)}</span>${i.id==='heat-access'?'<span class="badge success">주력 검토</span>':''}${gate[i.id]?`<span class="badge warning">${e(gate[i.id])}</span>`:''}</div><h3>${e(i.title)}</h3><p>${e(i.summary)}</p><div class="card-method">${tags[i.id].map(t=>`<span>${e(t)}</span>`).join('')}</div></div><div class="card-score"><b>${i.score.toFixed(1)}</b><small>/ 5.0</small><span class="arrow" aria-hidden="true">↗</span></div></button>`).join('');
-  $$('[data-idea]').forEach(b=>b.addEventListener('click',()=>showIdea(b.dataset.idea,b)));
+  if($('#nav-count')) $('#nav-count').textContent = ideas.length;
+  $('#idea-list').innerHTML=rank.map(i=>`<a class="idea-card${i.id==='flood-resilience'?' featured':''}" data-idea="${e(i.id)}" href="#${({'heat-access':'spaces','school-access':'schools','flood-resilience':'disaster'})[i.id]}"><div><div class="card-kicker"><span>${String(i.index+1).padStart(2,'0')} / ${e(i.domain)}</span>${i.id==='flood-resilience'?'<span class="badge success">우선 검토</span>':''}${gate[i.id]?`<span class="badge warning">${e(gate[i.id])}</span>`:''}</div><h3>${e(i.title)}</h3><p>${e(i.summary)}</p><div class="card-method">${tags[i.id].map(t=>`<span>${e(t)}</span>`).join('')}</div></div><div class="card-score"><b>${i.score.toFixed(1)}</b><small>/ 5.0</small><span class="arrow" aria-hidden="true">↗</span></div></a>`).join('');
 }
-function showIdea(id,button){
-  const i=ideas.find(x=>x.id===id); if(!i) return;
-  activeCard=button;
-  const fields=[['문제와 필요',i.need],['방법론',i.method],['무엇을 측정하나',i.observable],['비교 기준 · 널모형',i.nullModel],['검증 방법',i.validation],['작게 시작하는 MVP',i.mvp],['제약과 위험',i.risk],['점수의 근거',i.scoreRationale||'공개 연구 적합성·데이터 확보 조건·질문 차별성을 기준으로 한 정성 판단입니다.']];
-  $('#idea-detail').innerHTML=`<span class="badge info">${e(i.domain)}</span> ${gate[id]?`<span class="badge warning">${e(gate[id])}</span>`:''}<h2 id="dialog-title">${e(i.title)}</h2><p>${e(i.summary)}</p>${id==='heat-access'?'<p><a href="#climate" id="open-climate-design">스케일링 계산과 전체 모델 설계 보기 →</a></p>':''}<div class="detail-grid">${fields.map(([label,value])=>`<section class="detail-item"><h3>${e(label)}</h3><p>${e(value)}</p></section>`).join('')}<section class="detail-item"><h3>연결할 데이터 후보</h3><ul class="source-links">${bundle[id].map(d=>datasets.find(x=>x.id===d)).filter(Boolean).map(d=>`<li>${external(d.url,d.name)} <span class="meta">${e(d.id)}</span></li>`).join('')}</ul><p class="meta" style="margin-top:12px">지역별 보행망·운영시간·통학구역·돌봄시설·의료/대피 시설은 선택 주제에 따라 추가 확보가 필요합니다. 목록의 모든 데이터가 확보된 것은 아닙니다.</p></section><section class="detail-item"><h3>공식 근거와 방법론 선례</h3><ul class="source-links">${i.sources.map(s=>`<li>${external(s.url,s.title)}<p class="meta">${e(s.published)} · 관측: ${e(s.referencePeriod)}</p></li>`).join('')}</ul></section></div>`;
-  $('#open-climate-design')?.addEventListener('click',()=>$('#idea-dialog').close());
-  const method=methods.find(m=>m.id===id);
-  if(method) $('#idea-detail').insertAdjacentHTML('beforeend',`<section class="idea-method"><h3>수식과 관련 레퍼런스</h3>${methodBody(method)}<p class="method-all-link"><a href="#methods" id="open-methods">7개 방법론 모아 보기 →</a></p></section>`);
-  $('#open-methods')?.addEventListener('click',()=>$('#idea-dialog').close());
-  $('#idea-dialog').showModal();$('#idea-dialog').scrollTop=0;$('#close-dialog').focus();
-}
-function renderProfiles(){
-  $('#profile-list').innerHTML=people.map(p=>`<article class="profile-card"><h2>${e(p.name)}</h2><div class="label">공개 활동에서 관찰</div><p>${e(p.observed)}</p><div class="label">이번 연구로 연결 · 추론</div><p>${e(p.fit)}</p><div class="label">해석의 범위</div><p>${e(p.inference)}</p>${external(p.url,'프로필 원문')}${p.sources?.length?`<details style="margin-top:14px"><summary class="meta">관련 공개 연구</summary><ul class="source-links">${p.sources.map((s,i)=>`<li>${external(s,`연구 근거 ${i+1}`)}</li>`).join('')}</ul></details>`:''}</article>`).join('');
+function newsCard(s){
+  return `<article class="evidence-card"><div class="evidence-date">${e(s.published)}<span>2026년 3분기 보도</span></div><div><h2>${e(s.title)}</h2><p>${e(s.claim)}</p><p class="meta">관측·대상 기간: ${e(s.referencePeriod)}</p>${external(s.url,'공식 보도 원문')}<details class="news-verification"><summary>확인 상태</summary><p class="meta">${e(s.verificationStatus)}</p></details></div></article>`;
 }
 function renderEvidence(){
-  const map=new Map();
-  ideas.forEach(i=>i.sources.forEach(s=>{if(!map.has(s.url))map.set(s.url,{...s,ideas:[]});map.get(s.url).ideas.push(i.title);}));
-  const sources=[...map.values()].sort((a,b)=>Number(a.kind==='research'||/nature.com/.test(a.url))-Number(b.kind==='research'||/nature.com/.test(b.url))||String(b.published).localeCompare(a.published));
-  $('#evidence-list').innerHTML=sources.map(s=>`<article class="evidence-card"><div class="evidence-date">${e(s.published)}<span>${(s.kind==='research'||/nature.com/.test(s.url))?'방법론 선례':'공식·공공기관 자료'}</span></div><div><h2>${e(s.title)}</h2><p>${e(s.claim)}</p><p class="meta">관측·기준 기간: ${e(s.referencePeriod)}</p><p class="meta">연결 질문: ${e([...new Set(s.ideas)].join(' / '))}</p>${external(s.url,'근거 원문 열기')}</div></article>`).join('');
+  const {news,newsGaps}=window.RESEARCH;
+  $('#evidence-list').innerHTML=[...news].sort((a,b)=>b.published.localeCompare(a.published)).map(newsCard).join('')+`<details class="method-assumptions"><summary>분야별 보도 확보 상태</summary><ul>${newsGaps.gaps.map(g=>`<li>${e(g)}</li>`).join('')}</ul></details><aside class="callout"><b>자료 제공 공지 · 보도자료와 구분</b><p>${e(newsGaps.dataNotice.note)}</p><p>${external(newsGaps.dataNotice.url,newsGaps.dataNotice.title)} · ${e(newsGaps.dataNotice.published)}</p></aside>`;
 }
 function renderData(){
   const search=$('#data-search').value.trim().toLocaleLowerCase();
@@ -99,10 +75,6 @@ $$('[data-category]').forEach(b=>b.addEventListener('click',()=>{category=b.data
 $$('#ideas input[type=range]').forEach(i=>i.addEventListener('input',renderIdeas));
 $('#reset-weights').addEventListener('click',()=>{['fit','feasibility','novelty'].forEach((n,i)=>$(`#weight-${n}`).value=[40,40,20][i]);renderIdeas();});
 $('#data-search').addEventListener('input',renderData);
-$('#close-dialog').addEventListener('click',()=>$('#idea-dialog').close());
-$('#idea-dialog').addEventListener('close',()=>activeCard?.focus());
-window.addEventListener('hashchange',navigate);
 $('#rubric').innerHTML=[['기획성',20],['구체성',20],['실효성',20],['정확성',20],['분석도구 활용',10],['종합 완성도',10]].map(([label,v])=>`<div class="rubric-row"><span>${label}</span><div class="rubric-track"><span style="width:${v*5}%"></span></div><b>${v}점</b></div>`).join('');
-renderIdeas();renderProfiles();renderEvidence();renderData();renderMethods();
+renderIdeas();renderEvidence();renderData();renderMethods();
 $('#care-methods').innerHTML=methodBody(methods.find(m=>m.id==='care'));
-navigate();

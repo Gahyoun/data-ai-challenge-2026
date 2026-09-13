@@ -1,0 +1,148 @@
+[
+  {
+    "id": "spaces",
+    "number": 2,
+    "ideaId": "heat-access",
+    "title": "모두를 위한 공간",
+    "methodIds": [
+      "terrain-access",
+      "care",
+      "heat-access"
+    ],
+    "datasetIds": [
+      "D01",
+      "D02",
+      "D13",
+      "D15",
+      "D16",
+      "D17",
+      "D18",
+      "D19",
+      "D20",
+      "D21",
+      "D22",
+      "D23",
+      "D24"
+    ],
+    "pages": [
+      {
+        "id": "accessibility",
+        "title": "돌봄·복지 접근성",
+        "summary": "고도·경사·지역별 인구분포를 반영한 연령대 맞춤 계획",
+        "kind": "care"
+      },
+      {
+        "id": "methods",
+        "title": "수식·레퍼런스",
+        "summary": "고도와 이동비용, 정원 배분과 이론적 기준선",
+        "kind": "methods"
+      },
+      {
+        "id": "data",
+        "title": "관련 공공데이터 후보",
+        "summary": "보행망·고도·인구·시설·시각표·수용량의 결합",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "id": "schools",
+    "number": 3,
+    "ideaId": "school-access",
+    "title": "아동인구 변화에 따른 중장기적 학교통폐합",
+    "methodIds": [
+      "school-access"
+    ],
+    "datasetIds": [
+      "D01",
+      "D06",
+      "D07",
+      "D08",
+      "D09",
+      "D16",
+      "D23",
+      "D25",
+      "D26"
+    ],
+    "pages": [
+      {
+        "id": "population",
+        "title": "지역별 아동인구 시나리오",
+        "summary": "신도심·산업 클러스터·군·면 지역의 서로 다른 인구 변화",
+        "kind": "section"
+      },
+      {
+        "id": "plan",
+        "title": "학교 배치·통폐합 대안",
+        "summary": "초등·중등 대상 인구를 시간에 따라 추정하고 학교 대안을 비교",
+        "kind": "section"
+      },
+      {
+        "id": "methods",
+        "title": "수식·레퍼런스",
+        "summary": "연령 코호트·지역 이동과 학교 용량·통학시간",
+        "kind": "methods"
+      },
+      {
+        "id": "data",
+        "title": "관련 공공데이터 후보",
+        "summary": "연령별 인구·이동·학교·통학구역·개발계획",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "id": "disaster",
+    "number": 4,
+    "ideaId": "flood-resilience",
+    "title": "재난 대비 필수시설 접근성 취약지점 진단",
+    "methodIds": [
+      "flood-resilience"
+    ],
+    "datasetIds": [
+      "D01",
+      "D02",
+      "D03",
+      "D06",
+      "D14",
+      "D15",
+      "D16",
+      "D27",
+      "D28",
+      "D29",
+      "D30"
+    ],
+    "pages": [
+      {
+        "id": "scenarios",
+        "title": "재난별 도로 단절 시나리오",
+        "summary": "침수·폭설·지진을 다른 손상·통행 제약으로 표현",
+        "kind": "section"
+      },
+      {
+        "id": "flow",
+        "title": "인구 에이전트 이동과 병목",
+        "summary": "지정 대피소·병원까지의 이동, 통과 부하와 위험노출 대조",
+        "kind": "section"
+      },
+      {
+        "id": "reinforcement",
+        "title": "보강 효과와 객관적 증빙",
+        "summary": "같은 예산으로 회복되는 서비스 접근성·미도달 수요 비교",
+        "kind": "section"
+      },
+      {
+        "id": "methods",
+        "title": "수식·레퍼런스",
+        "summary": "간선 통과 부하·서비스 충족·보강의 한계효과",
+        "kind": "methods"
+      },
+      {
+        "id": "data",
+        "title": "관련 공공데이터 후보",
+        "summary": "재난 시나리오·도로통제·대피소·병원·지역 인구",
+        "kind": "data"
+      }
+    ]
+  }
+]
