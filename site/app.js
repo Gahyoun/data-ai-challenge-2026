@@ -8,7 +8,7 @@ const external = (url, title) => `<a href="${safeURL(url)}" target="_blank" rel=
 const ideas = window.RESEARCH.ideas;
 const datasets = window.RESEARCH.datasets;
 const people = window.RESEARCH.profile.people;
-const routes = {ideas:'아이디어 탐색',climate:'기후쉼터 모델 설계',profile:'연구자와 관심사',evidence:'현안과 근거',data:'공공데이터 후보',reuse:'치안 프로젝트 확장',plan:'공모 요건과 실행계획'};
+const routes = {ideas:'아이디어 탐색',climate:'기후쉼터 모델 설계',care:'돌봄·복지 접근성',profile:'연구자와 관심사',evidence:'현안과 근거',data:'공공데이터 후보',reuse:'치안 프로젝트 확장',plan:'공모 요건과 실행계획'};
 const categories = ['전체','교육','환경','교통','모빌리티','치안'];
 const tags = {
   'slope-patrol':['다층 네트워크','에너지 제약','공정 배치'],

@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
   <link rel="stylesheet" href="site/styles.css">
   <link rel="stylesheet" href="site/climate.css">
+  <link rel="stylesheet" href="site/care.css">
   <script src="site/content.js" defer></script>
   <script src="site/app.js" defer></script>
   <script src="site/climate.js" defer></script>
+  <script src="site/care.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 이동</a>
@@ -26,20 +28,21 @@
   <nav aria-label="주요 탐색">
     <a href="#ideas" data-route="ideas"><span aria-hidden="true">01</span>아이디어 탐색<b id="nav-count">6</b></a>
     <a href="#climate" data-route="climate"><span aria-hidden="true">02</span>기후쉼터 모델 설계</a>
-    <a href="#profile" data-route="profile"><span aria-hidden="true">03</span>연구자와 관심사</a>
-    <a href="#evidence" data-route="evidence"><span aria-hidden="true">04</span>현안과 근거</a>
-    <a href="#data" data-route="data"><span aria-hidden="true">05</span>공공데이터 후보</a>
-    <a href="#reuse" data-route="reuse"><span aria-hidden="true">06</span>치안 프로젝트 확장</a>
-    <a href="#plan" data-route="plan"><span aria-hidden="true">07</span>공모 요건과 실행계획</a>
+    <a href="#care" data-route="care"><span aria-hidden="true">03</span>돌봄·복지 접근성</a>
+    <a href="#profile" data-route="profile"><span aria-hidden="true">04</span>연구자와 관심사</a>
+    <a href="#evidence" data-route="evidence"><span aria-hidden="true">05</span>현안과 근거</a>
+    <a href="#data" data-route="data"><span aria-hidden="true">06</span>공공데이터 후보</a>
+    <a href="#reuse" data-route="reuse"><span aria-hidden="true">07</span>치안 프로젝트 확장</a>
+    <a href="#plan" data-route="plan"><span aria-hidden="true">08</span>공모 요건과 실행계획</a>
   </nav>
   <div class="sidebar-note"><p class="nav-caption">참가 검토 부문</p><strong>문제해결은행<br>분석도구 활용</strong><p>접수 마감 <b>10월 22일</b></p><a href="https://kdata.or.kr/datahub/portal/support/board/10/48" target="_blank" rel="noopener noreferrer">공모 원문 보기 ↗</a></div>
-  <div class="sidebar-bottom"><span class="badge neutral">검토 중</span><p>기준일 2026.09.13<br>4분기는 전망·준비 기간</p></div>
+  <div class="sidebar-bottom"><span class="badge neutral">검토 중</span><p>돌봄 확장 2026.09.14<br>원자료 기준일은 출처별 표기</p></div>
 </aside>
 <main id="main" tabindex="-1">
   <div class="breadcrumb">2026 데이터+AI 혁신 챌린지 <span>/</span> <span id="crumb">아이디어 탐색</span></div>
   <section id="ideas" class="view">
-    <div class="page-heading"><div><p class="eyebrow">QUESTION → EVIDENCE → EXPERIMENT</p><h1>어떤 문제에,<br class="mobile-only"> 우리의 방법을 쓸까.</h1><p class="intro">통계물리학과 복잡계 네트워크로 풀어볼 여섯 가지 질문.</p></div><span class="badge neutral">브레인스토밍 v2</span></div>
-    <div class="decision-panel"><div><span class="badge success">현재 권고</span><h2>고령인구·경사를 반영한<br>기후쉼터 배치를 주력으로</h2><p>지역 인구 구성과 개인의 이동성 분포를 반영합니다. 폭염 접근성부터 시작해 정원·개방시간을 넣은 ABM으로 확장하고, 스케일링 기준선과 비교합니다.</p></div><div class="decision-actions"><a class="button primary" href="#climate">기후쉼터 모델 설계 보기 <span aria-hidden="true">→</span></a><a class="text-link" href="#data">필요한 공공데이터 확인 ↗</a><span class="meta">연구 제안이며 분석 결과가 아닙니다.</span></div></div>
+    <div class="page-heading"><div><p class="eyebrow">QUESTION → EVIDENCE → EXPERIMENT</p><h1>어떤 문제에,<br class="mobile-only"> 우리의 방법을 쓸까.</h1><p class="intro">통계물리학과 복잡계 네트워크로 풀어볼 여섯 가지 질문.</p></div><span class="badge neutral">브레인스토밍 v3</span></div>
+    <div class="decision-panel"><div><span class="badge success">확장 검토</span><h2>기후쉼터에서 돌봄·복지로,<br>수요층의 이동 조건을 함께</h2><p>청소년·유소년·노년층의 보행·대중교통·동행 시나리오를 연결합니다. 같은 예산에서 시설·운영시간·보행 연결·픽업 중 무엇을 바꿀지 비교합니다.</p></div><div class="decision-actions"><a class="button primary" href="#care">돌봄·복지 확장안 보기 <span aria-hidden="true">→</span></a><a class="text-link" href="#climate">기후쉼터 모델 설계 보기 →</a><span class="meta">연구 제안이며 분석 결과가 아닙니다.</span></div></div>
     <div class="board-layout"><div class="ideas-column"><div class="section-bar"><h2>후보 아이디어 <span id="idea-count" class="count"></span></h2><span class="meta">카드를 열어 연구 설계 확인</span></div><div class="filter-row" id="idea-filters" role="group" aria-label="아이디어 분야"></div><div id="idea-list" class="idea-list"></div></div>
     <aside class="weight-panel"><div class="panel-title"><h3>무엇을 더 중요하게 볼까요?</h3><button id="reset-weights" class="text-button" type="button">초기화</button></div><p>가중치를 조정하면 후보 순서가 바뀝니다.</p><label for="weight-fit">연구 적합성 <output id="value-fit">40%</output></label><input id="weight-fit" type="range" min="0" max="100" step="5" value="40"><label for="weight-feasibility">실행 가능성 <output id="value-feasibility">40%</output></label><input id="weight-feasibility" type="range" min="0" max="100" step="5" value="40"><label for="weight-novelty">신규성 <output id="value-novelty">20%</output></label><input id="weight-novelty" type="range" min="0" max="100" step="5" value="20"><div class="score-note"><b>점수는 토론을 위한 가설입니다.</b><p>각 항목 1–5점의 정성 평가를 가중 평균했습니다. 공식 심사점수·수상확률이 아니며, 참가자격 위험은 점수와 별개입니다.</p></div><a class="text-link" href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/methods-and-mvp.md" target="_blank">수식·널모형·MVP 설계 ↗</a></aside></div>
   </section>
@@ -56,6 +59,28 @@
     <div class="document-link"><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/climate-shelter-abm-scaling.md" target="_blank">전체 연구 설계·유도·반증 기준 ↗</a> · <a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/climate-sources.md" target="_blank">핵심 선행연구 5편과 적용 한계 ↗</a></div>
   </section>
   <!-- climate-end -->
+  <!-- care-start -->
+  <section id="care" class="view" hidden>
+    <div class="page-heading"><div><p class="eyebrow">NEXT QUESTION · CARE ACCESSIBILITY</p><h1>누구에게는 가까운 시설,<br>누구에게는 닿지 않는 돌봄.</h1><p class="intro">보행 · 대중교통 · 동행을 연결해 수요층별 접근 공백과 개선안을 비교합니다.</p></div><span class="badge info">확장 검토 · 2026.09.14</span></div>
+    <div class="callout"><b>같은 예산으로, 필요한 서비스를 이용하고 돌아올 수 있는 사람을 얼마나 늘릴까?</b><p>시설 입지뿐 아니라 운영시간·정원·횡단 연결·환승·픽업을 함께 검토합니다. 기후쉼터에서 출발한 확장안이며, 실제 지역의 최적화 결과는 아직 없습니다.</p></div>
+    <article class="care-lab">
+      <div class="section-bar"><h2>수요층에 따라 달라지는 이동 조건</h2><span class="badge neutral">연구 시나리오 예시</span></div>
+      <p>연령은 집단 구성에 사용하고, 보행 능력·교통 공급·동행 가능성은 따로 설정합니다. 아래 특성은 실측된 연령별 평균이 아닙니다.</p>
+      <div class="filter-row" role="group" aria-label="수요층 시나리오"><button class="filter active" data-care="child" type="button" aria-pressed="true">유소년</button><button class="filter" data-care="youth" type="button" aria-pressed="false">청소년</button><button class="filter" data-care="senior" type="button" aria-pressed="false">노년층</button></div>
+      <div id="care-scenario" aria-live="polite"></div>
+    </article>
+    <h2 class="standalone-heading">한 장의 지도에 네 가지 층</h2>
+    <div class="care-layers"><article><span>01 · WALK</span><h3>보행 연결</h3><p>실제 출입구·횡단·계단·경사·휴식. 차량용 도로망을 보도망으로 사용하지 않습니다.</p></article><article><span>02 · TRANSIT</span><h3>시각표와 환승</h3><p>첫 보행부터 대기·승차·환승·마지막 보행까지. 돌아오는 시각의 교통편도 확인합니다.</p></article><article><span>03 · ACCOMPANIMENT</span><h3>동행과 픽업</h3><p>보호자 일정·차량 좌석·기사·회차·인계. 픽업을 무제한으로 쓸 수 있는 빠른 링크로 두지 않습니다.</p></article><article><span>04 · SERVICE</span><h3>이용 가능한 서비스</h3><p>프로그램별 대상 자격·시간창·정원. 아동 돌봄과 노인복지 프로그램을 대체 시설로 합치지 않습니다.</p></article></div>
+    <article class="method-panel"><p class="eyebrow">ARRIVAL → SERVICE → RETURN</p><h2>접근성의 끝점을 ‘서비스 이용과 귀가’까지</h2><p>필요한 시간에 도착해, 이용 자격과 정원을 충족하고, 서비스를 받은 뒤 귀가 또는 다음 활동까지 가능한지를 계산합니다. 단순 도달 가능 인구와 실제 방문 수요는 구분합니다.</p><div class="care-sequence" aria-label="서비스 접근성의 네 조건"><span>이동·안전 조건</span><b aria-hidden="true">→</b><span>자격·운영시간</span><b aria-hidden="true">→</b><span>정원·서비스 이용</span><b aria-hidden="true">→</b><span>귀가·보호자 일정</span></div><p class="meta">안전 관련 속성은 출처와 단위를 표시합니다. 스쿨존·CCTV·사고 건수 하나로 길의 안전성을 확정하지 않습니다.</p></article>
+    <h2 class="standalone-heading">어떤 개선이 공백을 메우는가</h2>
+    <div class="table-wrap"><table><thead><tr><th>발견한 병목</th><th>비교할 개선안</th><th>같이 확인할 조건</th></tr></thead><tbody><tr><td>시설은 가깝지만 길이 끊김</td><td>횡단·보도 연결, 계단 우회</td><td>실제 통행 가능성과 방향별 경사</td></tr><tr><td>도착해도 이용할 수 없음</td><td>정원 확대, 이용시간 조정</td><td>대상 자격·프로그램별 인력·체류시간</td></tr><tr><td>활동 종료 후 교통편이 없음</td><td>시간표 연계, 환승·귀가 교통 개선</td><td>운행일·회차·승하차 조건</td></tr><tr><td>보호자가 제시간에 올 수 없음</td><td>운영 연장, 시간창을 가진 동행·픽업</td><td>보호자 일정·좌석·회차·인계</td></tr></tbody></table></div>
+    <p class="meta">비교기간과 예산을 맞추고 시설비·운영비·인건비를 함께 계산합니다. 단가를 확보하지 못하면 비용 범위별 민감도를 제시합니다.</p>
+    <div class="two-column"><article class="plain-card"><span class="badge info">복잡계 네트워크</span><h2>같은 인프라, 다른 유효 연결망</h2><p>보행 시간·계단·환승·보호자 시간창을 바꾸며 집단별 서비스 도달성이 어떻게 변하는지 봅니다. 거대 연결요소의 크기만으로 돌봄 접근성을 대신하지 않습니다.</p><p>보행 개선과 정원 확대를 함께 할 때 단독 개선 효과의 합을 넘는지 검증합니다. 2/3 스케일링은 단순한 동일 서비스 기준선에 남기고, 다층 시각표·정원·인계 조건에 같은 지수를 강제하지 않습니다.</p></article><article class="plain-card"><span class="badge info">ABM으로 확장</span><h2>가능한 배정과 실제 행동을 비교</h2><p>시간의존 경로와 정원 제약 배정부터 시작합니다. 이후 대기·재선택·예약·보호자 일정 충돌을 넣어 시뮬레이션합니다.</p><p>전체 및 집단별 미충족률, 이동·대기 분포, 보호자 시간 부담을 비교합니다. 평균 개선과 집단별 형평성을 함께 봅니다.</p></article></div>
+    <article class="care-source"><span class="badge success">확인한 공식 근거</span><h2>운영시간과 시각표를 실제 데이터로</h2><p>보건복지부의 2026년 야간 연장돌봄 안내에는 참여시설별 종료시간 차이와 지정 보호자 인계 조건이 있습니다. KTDB는 2026년 9월 전국 GTFS 기반정보 제공을 공지했습니다.</p><p class="meta">GTFS의 기준은 2025년 3월 평일 1일입니다. 자료신청이 필요하고 ID가 비표준인 파일럿 자료이며, 2026년 현행·주말·실시간 자료는 아닙니다. 이번 검토에서 원자료를 수령하지 않았습니다.</p><p><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148958411" target="_blank" rel="noopener noreferrer">보건복지부 · 2026.01.22 ↗</a> · <a href="https://www.ktdb.go.kr/www/selectBbsNttView.do?bbsNo=2&amp;key=45&amp;nttNo=3825" target="_blank" rel="noopener noreferrer">KTDB · 2026.09.07 ↗</a></p></article>
+    <div class="callout"><b>첫 구현 제안: 한 자치구 · 초등 방과후 돌봄 · 평일 오후부터 귀가까지</b><p>공통 시점의 시설·보행·시각표 자료를 확보한 뒤 지역을 고릅니다. 이후 노년층의 특정 프로그램과 청소년 서비스에 각각 적용합니다. 원자료 확보·실제 경로 계산·ABM·문제해결은행 실행은 아직 하지 않았습니다.</p></div>
+    <p class="care-docs"><a class="button primary" href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/care-accessibility.md" target="_blank" rel="noopener noreferrer">목적함수·제약·비교 실험 ↗</a><a class="button" href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/care-data-sources.md" target="_blank" rel="noopener noreferrer">추가 데이터 후보와 필드 ↗</a><a class="text-link" href="#climate">기후쉼터 설계로 돌아가기 →</a></p>
+  </section>
+  <!-- care-end -->
   <section id="profile" class="view" hidden><div class="page-heading"><div><p class="eyebrow">RESEARCH FIT</p><h1>관심사를 연구 질문으로</h1><p class="intro">공개 연구 이력에서 관찰한 사실과, 협업 가능성에 대한 추론을 구분했습니다.</p></div></div><div class="callout"><b>연구 성향에 대한 가설</b><p>지식과 교육의 구조를 측정하고, 사회적 격차를 네트워크와 공간 데이터로 설명하는 방향이 잘 맞습니다. 이는 공개 연구 활동에서 얻은 작업 성향의 추론이며 개인의 심리·성격을 평가한 결과가 아닙니다.</p></div><div id="profile-list" class="profile-grid"></div><div class="document-link"><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/profile-and-reuse.md" target="_blank">공개 프로필·기존 프로젝트 상세 조사 ↗</a></div></section>
   <section id="evidence" class="view" hidden><div class="page-heading"><div><p class="eyebrow">PUBLIC EVIDENCE</p><h1>문제의 출발점은 근거에서</h1><p class="intro">교육·교통·환경·모빌리티를 연결하는 공식 통계와 정책 자료.</p></div></div><div class="callout warning"><b>2026년 4분기는 아직 시작되지 않았습니다.</b><p>2026년 9월 13일까지 발표된 자료로 현안을 정리했습니다. 발표 시점과 관측 기간을 구분하고, 4분기의 실제 발생·확정 성과처럼 서술하지 않습니다.</p></div><div id="evidence-list" class="evidence-list"></div><div class="document-link"><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/needs-and-ideas.md" target="_blank">현안 조사와 후보별 상세 논거 ↗</a></div></section>
   <section id="data" class="view" hidden><div class="page-heading"><div><p class="eyebrow">OPEN DATA CATALOG</p><h1>데이터를 연결할 수 있을까.</h1><p class="intro">상세 페이지, 분석 용도와 조인 키, 실제 확보 전 확인할 조건.</p></div><a class="button" href="data/datasets.json" download>목록 JSON 받기 ↓</a></div><div class="callout"><b>후보 등록과 데이터 확보는 다릅니다.</b><p>대부분 상세 메타데이터를 확인한 단계입니다. API 승인·다운로드·라이선스·연도·좌표계를 확인한 뒤 분석에 사용해야 합니다.</p></div><div class="catalog-tools"><label class="search"><span aria-hidden="true">⌕</span><input id="data-search" type="search" placeholder="데이터명, 기관, 분야, 용도로 검색" aria-label="공공데이터 검색"></label><span class="meta" id="data-count" aria-live="polite"></span></div><div id="data-list" class="data-list"></div><div class="document-link"><a href="https://github.com/Gahyoun/data-ai-challenge-2026/blob/main/research/data-catalog.md" target="_blank">전체 데이터 카탈로그와 조인 위험 ↗</a></div></section>
