@@ -13,7 +13,7 @@ const tags = {
   'slope-patrol':['다층 네트워크','에너지 제약','공정 배치'],
   'heat-access':['연령대 맞춤','기존 시설 확충','이동 연결'],
   'flood-resilience':['퍼콜레이션','도로 회복력','공간 널모형'],
-  'school-access':['이분 네트워크','공급 용량','접근성 형평성'],
+  'school-access':['인구 파동','입주 커널','후회값 비교'],
   'drt-access':['시간표 네트워크','환승·대기','DRT 시나리오'],
   'highway-local':['혼잡 군집','시계열 검증','충격 회복']
 };
@@ -21,7 +21,7 @@ const bundle = {
   'slope-patrol':['D01','D02','D03','D04','D05','D11','D16'],
   'heat-access':['D01','D02','D13','D15','D16','D17','D18'],
   'flood-resilience':['D01','D03','D06','D14','D15','D16'],
-  'school-access':['D01','D06','D07','D08','D09','D16'],
+  'school-access':['D06','D31','D32','D33','D34','D35','D36','D37','D38','D39'],
   'drt-access':['D01','D08','D09','D10','D16'],
   'highway-local':['D01','D03','D11','D12','D15']
 };
@@ -55,7 +55,7 @@ function renderIdeas(){
   const rank=ideas.map((i,index)=>({...i,index,score:i.fitScore*w[0]+i.feasibilityScore*w[1]+i.noveltyScore*w[2]})).filter(i=>category==='전체'||i.domain.includes(category)).sort((a,b)=>b.score-a.score||a.index-b.index);
   $('#idea-count').textContent = rank.length;
   if($('#nav-count')) $('#nav-count').textContent = ideas.length;
-  $('#idea-list').innerHTML=rank.map(i=>`<a class="idea-card${i.id==='flood-resilience'?' featured':''}" data-idea="${e(i.id)}" href="#${({'heat-access':'spaces','school-access':'schools','flood-resilience':'disaster'})[i.id]}"><div><div class="card-kicker"><span>${String(i.index+1).padStart(2,'0')} / ${e(i.domain)}</span>${i.id==='flood-resilience'?'<span class="badge success">우선 검토</span>':''}${gate[i.id]?`<span class="badge warning">${e(gate[i.id])}</span>`:''}</div><h3>${e(i.title)}</h3><p>${e(i.summary)}</p><div class="card-method">${tags[i.id].map(t=>`<span>${e(t)}</span>`).join('')}</div></div><div class="card-score"><b>${i.score.toFixed(1)}</b><small>/ 5.0</small><span class="arrow" aria-hidden="true">↗</span></div></a>`).join('');
+  $('#idea-list').innerHTML=rank.map(i=>`<a class="idea-card${i.id==='school-access'?' featured':''}" data-idea="${e(i.id)}" href="#${({'heat-access':'spaces','school-access':'schools','flood-resilience':'disaster'})[i.id]}"><div><div class="card-kicker"><span>${String(i.index+1).padStart(2,'0')} / ${e(i.domain)}</span>${i.id==='school-access'?'<span class="badge success">우선 검토</span>':'<span class="badge neutral">후보</span>'}${gate[i.id]?`<span class="badge warning">${e(gate[i.id])}</span>`:''}</div><h3>${e(i.title)}</h3><p>${e(i.summary)}</p><div class="card-method">${tags[i.id].map(t=>`<span>${e(t)}</span>`).join('')}</div></div><div class="card-score"><b>${i.score.toFixed(1)}</b><small>/ 5.0</small><span class="arrow" aria-hidden="true">↗</span></div></a>`).join('');
 }
 function newsCard(s){
   return `<article class="evidence-card"><div class="evidence-date">${e(s.published)}<span>2026년 3분기 보도</span></div><div><h2>${e(s.title)}</h2><p>${e(s.claim)}</p><p class="meta">관측·대상 기간: ${e(s.referencePeriod)}</p>${external(s.url,'공식 보도 원문')}<details class="news-verification"><summary>확인 상태</summary><p class="meta">${e(s.verificationStatus)}</p></details></div></article>`;
